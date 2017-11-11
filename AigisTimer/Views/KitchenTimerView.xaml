@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="AigisTimer.Views.KitchenTimerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:local="clr-namespace:AigisTimer.Views"
+             xmlns:vm="clr-namespace:AigisTimer.ViewModels"
+             xmlns:md="clr-namespace:AigisTimer.Models"
+             xmlns:b="clr-namespace:AigisTimer.Views.Behaviors"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="180">
+    <UserControl.DataContext>
+        <vm:TimerViewModel TimerType="Kitchen"></vm:TimerViewModel>
+    </UserControl.DataContext>
+    <Grid  Background="{Binding BackgroundColor}">
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Padding="5" >KTテスト</TextBlock>
+                    <TextBlock x:Name="Hour" Padding="0,5" 
+                        MinWidth="10"
+                        Text="{Binding Hour, StringFormat={}{0:00}}"
+                        Foreground="{Binding ForgroundColor}">
+                        <i:Interaction.Behaviors>
+                            <b:RollTimerParamBehavior 
+                                Command="{Binding RollTimerParamCommand}"
+                                TargetPropertyName="Hour"/>
+                        </i:Interaction.Behaviors>
+                    </TextBlock>
+                    <Label Padding="3,4">:</Label>
+                    <TextBlock x:Name="Minute" Padding="0,5" 
+                        MinWidth="10"
+                        Text="{Binding Minute, StringFormat={}{0:00}}"
+                        Foreground="{Binding ForgroundColor}">
+                        <i:Interaction.Behaviors>
+                            <b:RollTimerParamBehavior 
+                                Command="{Binding RollTimerParamCommand}"
+                                TargetPropertyName="Minute"/>
+                        </i:Interaction.Behaviors>
+                    </TextBlock>
+                    <Label Padding="3,4">:</Label>
+                    <TextBlock x:Name="Second" Padding="0,5" 
+                        MinWidth="10"
+                        Text="{Binding Second, StringFormat={}{0:00}}"
+                        Foreground="{Binding ForgroundColor}">
+                        <i:Interaction.Behaviors>
+                            <b:RollTimerParamBehavior 
+                                Command="{Binding RollTimerParamCommand}"
+                                TargetPropertyName="Second"/>
+                        </i:Interaction.Behaviors>
+                    </TextBlock>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
+                <Button Content="■"
+                        Margin="4"
+                        Command="{Binding TimerStopCommand}"
+                        />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="AigisTimer.Views.TestView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:vm="clr-namespace:AigisTimer.ViewModels"
+             xmlns:b="clr-namespace:AigisTimer.Views.Behaviors"
+             xmlns:local="clr-namespace:AigisTimer.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="180">
+    <UserControl.DataContext>
+        <vm:TimerViewModel/>
+    </UserControl.DataContext>
+    <Grid  Background="{Binding BackgroundColor}">
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Padding="5" >スタミナ</TextBlock>
+                    <TextBlock x:Name="Stamina" Padding="0,5" 
+                        MinWidth="20"
+                        Text="{Binding Stamina}"
+                        TextAlignment="Right"
+                        Foreground="{Binding ForgroundColor}">
+                        <i:Interaction.Behaviors>
+                            <b:RollTimerParamBehavior 
+                                Command="{Binding RollTimerParamCommand}"
+                                TargetPropertyName="Stamina"/>
+                        </i:Interaction.Behaviors>
+                    </TextBlock>
+                    <Label Padding="3,5">/</Label>
+                    <TextBlock x:Name="StaminaMax" Padding="0,5" 
+                           MinWidth="10"
+                            TextAlignment="Left"
+                           Text="{Binding StaminaMax}"
+                           Foreground="{Binding ForgroundColor}">
+                        <i:Interaction.Behaviors>
+                            <b:RollTimerParamBehavior 
+                                Command="{Binding RollTimerParamCommand}"
+                                TargetPropertyName="StaminaMax"/>
+                        </i:Interaction.Behaviors>
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Padding="5" >回復まで</TextBlock>
+                    <TextBlock x:Name="RecoveryTimeMin" Padding="0,5" 
+                        MinWidth="10"
+                        Text="{Binding RecoveryTimeMin, StringFormat={}{0:00}}"
+                        Foreground="{Binding ForgroundColor}">
+                        <i:Interaction.Behaviors>
+                            <b:RollTimerParamBehavior 
+                                Command="{Binding RollTimerParamCommand}"
+                                TargetPropertyName="RecoveryTimeMin"/>
+                        </i:Interaction.Behaviors>
+                    </TextBlock>
+                    <Label Padding="3,4">:</Label>
+                    <TextBlock x:Name="RecoveryTimeSec" Padding="0,5" 
+                        MinWidth="10"
+                        Text="{Binding RecoveryTimeSec, StringFormat={}{0:00}}"
+                        Foreground="{Binding ForgroundColor}">
+                        <i:Interaction.Behaviors>
+                            <b:RollTimerParamBehavior 
+                                Command="{Binding RollTimerParamCommand}"
+                                TargetPropertyName="RecoveryTimeSec"/>
+                        </i:Interaction.Behaviors>
+                    </TextBlock>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
+                <Button Content="■"
+                        Margin="10"
+                        Command="{Binding TimerStopCommand}"
+                        />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

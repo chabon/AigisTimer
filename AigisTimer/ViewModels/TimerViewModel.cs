@@ -48,13 +48,6 @@ namespace AigisTimer.ViewModels
             { TimerModel.States.End,     new SolidColorBrush(Colors.Gray)  },
         };
         private DelegateCommand<string> _testDelegateCommand;
-        //private RollTimerParamCommand _rollStaminaCommand;
-        //private RollTimerParamCommand _rollStaminaMaxCommand;
-        //private RollTimerParamCommand _rollRecoveryTimeMinCommand;
-        //private RollTimerParamCommand _rollRecoveryTimeSecCommand;
-        //private RollTimerParamCommand _rollHourCommand;
-        //private RollTimerParamCommand _rollMinuteCommand;
-        //private RollTimerParamCommand _rollSecondCommand;
 
 
         // タイマータイプ
@@ -179,55 +172,6 @@ namespace AigisTimer.ViewModels
                   (_rollTimerParamCommand = new RollTimerParamCommand(this));
             }
         }
-
-        //// スタミナを動かすコマンド
-        //public RollTimerParamCommand RollStaminaCommand
-        //{
-        //    get { return _rollStaminaCommand ?? 
-        //            ( _rollStaminaCommand = new RollTimerParamCommand(this, nameof(Stamina)) ); }
-        //}
-
-        //// スタミナ最大値を動かすコマンド
-        //public RollTimerParamCommand RollStaminaMaxCommand
-        //{
-        //    get { return _rollStaminaMaxCommand ?? 
-        //            ( _rollStaminaMaxCommand = new RollTimerParamCommand(this, nameof(StaminaMax)) ); }
-        //}
-
-        //// 「回復まで」の分単位部分を動かすコマンド
-        //public RollTimerParamCommand RollRecoveryTimeMinCommand
-        //{
-        //    get { return _rollRecoveryTimeMinCommand ?? 
-        //            ( _rollRecoveryTimeMinCommand = new RollTimerParamCommand(this, nameof(RecoveryTimeMin)) ); }
-        //}
-
-        //// 「回復まで」の秒単位部分を動かすコマンド
-        //public RollTimerParamCommand RollRecoveryTimeSecCommand
-        //{
-        //    get { return _rollRecoveryTimeSecCommand ?? 
-        //            ( _rollRecoveryTimeSecCommand = new RollTimerParamCommand(this, nameof(RecoveryTimeSec)) ); }
-        //}
-
-        //// 「時間」部分を動かすコマンド
-        //public RollTimerParamCommand RollHourCommand
-        //{
-        //    get { return _rollHourCommand ?? 
-        //            ( _rollHourCommand = new RollTimerParamCommand(this, nameof(Hour)) ); }
-        //}
-
-        //// 「分」部分を動かすコマンド
-        //public RollTimerParamCommand RollMinuteCommand
-        //{
-        //    get { return _rollMinuteCommand ?? 
-        //            ( _rollMinuteCommand = new RollTimerParamCommand(this, nameof(Minute)) ); }
-        //}
-
-        //// 「秒」部分を動かすコマンド
-        //public RollTimerParamCommand RollSecondCommand
-        //{
-        //    get { return _rollSecondCommand ?? 
-        //            ( _rollSecondCommand = new RollTimerParamCommand(this, nameof(Second)) ); }
-        //}
 
 
         // タイマー停止コマンド
